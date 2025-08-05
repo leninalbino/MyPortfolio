@@ -1,175 +1,203 @@
-import { useState } from 'react';
+import { useForm, ValidationError } from '@formspree/react';
+import { motion } from 'framer-motion';
+import AnimatedSection from '../ui/AnimatedSection';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
+  // REEMPLAZA "YOUR_FORM_ID" con tu ID real de Formspree
+  const [state, handleSubmit] = useForm("xpwlyypw");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Aquí manejarías el envío del formulario
-    console.log('Form submitted:', formData);
-    // Reset form
-    setFormData({ name: '', email: '', subject: '', message: '' });
-  };
+  if (state.succeeded) {
+    return (
+      <section id="contact" className="section-padding bg-gray-900">
+        <div className="container-custom">
+          <div className="max-w-2xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="bg-green-600/20 border border-green-500/30 rounded-2xl p-8"
+            >
+              <span className="text-6xl mb-4 block">✅</span>
+              <h2 className="text-3xl font-bold text-white mb-4">
+                ¡Mensaje enviado!
+              </h2>
+              <p className="text-gray-300 mb-6">
+                Gracias por contactarme. Te responderé lo antes posible.
+              </p>
+              <button
+                onClick={() => window.location.reload()}
+                className="btn-primary"
+              >
+                Enviar otro mensaje
+              </button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="contact" className="section-padding bg-gray-900">
       <div className="container-custom">
-        <div className="text-center mb-16">
+        <AnimatedSection className="text-center mb-16">
           <span className="text-primary-400 font-semibold text-lg">Contacto</span>
           <h2 className="text-4xl font-bold text-white mt-2 mb-4">
-            ¿Tienes un proyecto en mente?
+            ¡Trabajemos juntos!
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Estoy siempre interesado en nuevos desafíos y oportunidades. 
-            ¡Hablemos sobre tu próximo proyecto!
+            ¿Tienes un proyecto en mente? Me encantaría conocer más detalles.
           </p>
-        </div>
+        </AnimatedSection>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Información de contacto */}
-          <div className="space-y-8">
-            <div>
+          <AnimatedSection direction="left" delay={0.2}>
+            <div className="space-y-8">
               <h3 className="text-2xl font-bold text-white mb-6">
-                Información de Contacto
+                Información de contacto
               </h3>
               
-              <div className="space-y-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-xl">📧</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-300">Email</p>
-                    <p className="text-white font-medium">leninalbino@gmail.com</p>
-                  </div>
+              <motion.div className="flex items-center space-x-4" whileHover={{ x: 5 }}>
+                <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+                  <span className="text-xl">📧</span>
                 </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-xl">📱</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-300">Teléfono</p>
-                    <p className="text-white font-medium">+51 932434695</p>
-                  </div>
+                <div>
+                  <p className="text-gray-400">Email</p>
+                  <p className="text-white font-medium">leninalbino@gmail.com</p>
                 </div>
+              </motion.div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-xl">📍</span>
-                  </div>
-                  <div>
-                    <p className="text-gray-300">Ubicación</p>
-                    <p className="text-white font-medium">Lima, Perú</p>
-                  </div>
+              <motion.div className="flex items-center space-x-4" whileHover={{ x: 5 }}>
+                <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+                  <span className="text-xl">💼</span>
                 </div>
-              </div>
-            </div>
-
-            {/* Redes sociales */}
-            <div>
-              <h4 className="text-xl font-bold text-white mb-4">Sígueme</h4>
-              <div className="flex space-x-4">
-                {[
-                  { name: 'GitHub', icon: '🐱', href: 'https://github.com/leninalbino?tab=repositories' },
-                  { name: 'LinkedIn', icon: '💼', href: 'https://www.linkedin.com/in/lenin-leonor-albino-chavez-227527209/' },
-                ].map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.href}
-                    className="w-12 h-12 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors duration-200"
+                <div>
+                  <p className="text-gray-400">LinkedIn</p>
+                  <a 
+                    href="https://www.linkedin.com/in/lenin-leonor-albino-chavez-227527209/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-400 hover:text-primary-300 transition-colors"
                   >
-                    <span className="text-xl">{social.icon}</span>
+                    Lenin Leonor Albino Chavez
                   </a>
-                ))}
-              </div>
+                </div>
+              </motion.div>
+
+              <motion.div className="flex items-center space-x-4" whileHover={{ x: 5 }}>
+                <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+                  <span className="text-xl">🐱</span>
+                </div>
+                <div>
+                  <p className="text-gray-400">GitHub</p>
+                  <a 
+                    href="https://github.com/leninalbino"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary-400 hover:text-primary-300 transition-colors"
+                  >
+                    @leninalbino
+                  </a>
+                </div>
+              </motion.div>
             </div>
-          </div>
+          </AnimatedSection>
 
           {/* Formulario */}
-          <div className="bg-gray-800 p-8 rounded-2xl">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+          <AnimatedSection direction="right" delay={0.4}>
+            <div className="bg-gray-800 p-8 rounded-2xl">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-white font-medium mb-2">
+                      Nombre *
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
+                      placeholder="Tu nombre completo"
+                    />
+                    <ValidationError 
+                      prefix="Name" 
+                      field="name"
+                      errors={state.errors}
+                      className="text-red-400 text-sm mt-1"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-white font-medium mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
+                      placeholder="tu@email.com"
+                    />
+                    <ValidationError 
+                      prefix="Email" 
+                      field="email"
+                      errors={state.errors}
+                      className="text-red-400 text-sm mt-1"
+                    />
+                  </div>
+                </div>
+
                 <div>
                   <label className="block text-white font-medium mb-2">
-                    Nombre
+                    Asunto *
                   </label>
                   <input
                     type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
+                    name="subject"
                     required
                     className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
-                    placeholder="Tu nombre"
+                    placeholder="¿De qué se trata tu proyecto?"
                   />
                 </div>
+
                 <div>
                   <label className="block text-white font-medium mb-2">
-                    Email
+                    Mensaje *
                   </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
+                  <textarea
+                    name="message"
                     required
-                    className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
-                    placeholder="tu@email.com"
+                    rows={6}
+                    className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all resize-none"
+                    placeholder="Cuéntame sobre tu proyecto..."
+                  />
+                  <ValidationError 
+                    prefix="Message" 
+                    field="message"
+                    errors={state.errors}
+                    className="text-red-400 text-sm mt-1"
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className="block text-white font-medium mb-2">
-                  Asunto
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
-                  placeholder="Asunto del mensaje"
-                />
-              </div>
-
-              <div>
-                <label className="block text-white font-medium mb-2">
-                  Mensaje
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all resize-none"
-                  placeholder="Cuéntame sobre tu proyecto..."
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full bg-primary-600 hover:bg-primary-700 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200"
-              >
-                Enviar Mensaje
-              </button>
-            </form>
-          </div>
+                <motion.button
+                  type="submit"
+                  disabled={state.submitting}
+                  className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                  whileHover={{ scale: state.submitting ? 1 : 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  {state.submitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Enviando...
+                    </>
+                  ) : (
+                    'Enviar Mensaje'
+                  )}
+                </motion.button>
+              </form>
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>
