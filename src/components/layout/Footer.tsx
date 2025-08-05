@@ -1,92 +1,181 @@
+import { motion } from 'framer-motion';
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const socialLinks = [
+    {
+      name: 'GitHub',
+      url: 'https://github.com/leninalbino',
+      icon: (
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      )
+    },
+    {
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/lenin-leonor-albino-chavez-227527209/',
+      icon: (
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      )
+    }
+  ];
 
   const quickLinks = [
     { name: 'Sobre mí', href: '#about' },
     { name: 'Proyectos', href: '#projects' },
     { name: 'Habilidades', href: '#skills' },
-    { name: 'Contacto', href: '#contact' },
-  ];
-
-  const socialLinks = [
-    { name: 'GitHub', icon: '🐱', href: 'https://github.com/leninalbino?tab=repositories' },
-    { name: 'LinkedIn', icon: '💼', href: 'https://www.linkedin.com/in/lenin-leonor-albino-chavez-227527209/' },
-    { name: 'Email', icon: '📧', href: 'mailto:leninalbino@gmail.com' },
+    { name: 'Contacto', href: '#contact' }
   ];
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-gray-900 dark:bg-black text-white transition-colors duration-300">
       <div className="container-custom">
         {/* Contenido principal del footer */}
-        <div className="py-12 grid md:grid-cols-4 gap-8">
-          {/* Logo y descripción */}
-          <div className="md:col-span-2">
-            <h3 className="text-2xl font-bold text-primary-400 mb-4">
-              Lenin
-            </h3>
-            <p className="text-gray-300 mb-6 max-w-md">
-              Desarrollador Full Stack apasionado por crear soluciones digitales 
-              innovadoras y experiencias de usuario excepcionales.
-            </p>
-            <div className="flex space-x-4">
-              {socialLinks.map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="w-10 h-10 bg-gray-800 hover:bg-primary-600 rounded-lg flex items-center justify-center transition-colors duration-200"
-                  title={link.name}
-                >
-                  <span className="text-lg">{link.icon}</span>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* Enlaces rápidos */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Enlaces Rápidos</h4>
-            <ul className="space-y-2">
-              {quickLinks.map((link, index) => (
-                <li key={index}>
-                  <a
-                    href={link.href}
-                    className="text-gray-300 hover:text-primary-400 transition-colors duration-200"
+        <div className="py-12 lg:py-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Sección de marca */}
+            <motion.div 
+              className="sm:col-span-2 lg:col-span-1"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <motion.h3 
+                className="text-2xl lg:text-3xl font-bold text-primary-400 mb-4"
+                whileHover={{ scale: 1.05 }}
+              >
+                Lenin
+              </motion.h3>
+              <p className="text-gray-400 leading-relaxed mb-6">
+                Desarrollador Full Stack apasionado por crear soluciones digitales innovadoras y escalables.
+              </p>
+              <div className="flex space-x-4">
+                {socialLinks.map((link) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label={link.name}
                   >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+                    {link.icon}
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
 
-          {/* Contacto */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Contacto</h4>
-            <div className="space-y-2 text-gray-300">
-              <p>📧 leninalbino@gmail.com</p>
-              <p>📱 +51 932434695</p>
-              <p>📍 Lima, Perú</p>
+            {/* Enlaces rápidos */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              <h4 className="text-lg font-semibold mb-6">Enlaces rápidos</h4>
+              <ul className="space-y-3">
+                {quickLinks.map((link) => (
+                  <li key={link.name}>
+                    <motion.a
+                      href={link.href}
+                      className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center"
+                      whileHover={{ x: 5 }}
+                    >
+                      <span className="mr-2">→</span>
+                      {link.name}
+                    </motion.a>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Tecnologías */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h4 className="text-lg font-semibold mb-6">Tecnologías</h4>
+              <ul className="space-y-3 text-gray-400">
+                <li>React & Angular</li>
+                <li>TypeScript</li>
+                <li>Python & C#</li>
+                <li>Node.js & Java</li>
+                <li>PostgreSQL & MongoDB</li>
+              </ul>
+            </motion.div>
+
+            {/* Información de contacto */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <h4 className="text-lg font-semibold mb-6">Contacto</h4>
+              <div className="space-y-3 text-gray-400">
+                <motion.a
+                  href="mailto:leninalbino@gmail.com"
+                  className="flex items-center hover:text-white transition-colors duration-200"
+                  whileHover={{ x: 5 }}
+                >
+                  <span className="mr-3">📧</span>
+                  leninalbino@gmail.com
+                </motion.a>
+                <p className="flex items-center">
+                  <span className="mr-3">📍</span>
+                  Disponible para trabajar remotamente
+                </p>
+                <p className="flex items-center">
+                  <span className="mr-3">🕒</span>
+                  Respuesta en menos de 24h
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Sección inferior */}
+        <motion.div 
+          className="border-t border-gray-800 dark:border-gray-700 py-6 lg:py-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+            <p className="text-gray-400 text-sm lg:text-base">
+              © {currentYear} Lenin Albino. Todos los derechos reservados.
+            </p>
+            
+            <div className="flex items-center space-x-4 text-sm text-gray-400">
+              <span>Hecho con</span>
+              <motion.span 
+                className="text-red-500"
+                animate={{ 
+                  scale: [1, 1.2, 1],
+                  transition: {
+                    duration: 1,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }
+                }}
+              >
+                ❤️
+              </motion.span>
+              <span>y</span>
+              <motion.span 
+                className="text-blue-400"
+                whileHover={{ scale: 1.1 }}
+              >
+                React
+              </motion.span>
             </div>
           </div>
-        </div>
-
-        {/* Línea divisoria */}
-        <div className="border-t border-gray-800"></div>
-
-        {/* Copyright */}
-        <div className="py-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
-            © {currentYear} Lenin. Todos los derechos reservados.
-          </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">
-              Política de Privacidad
-            </a>
-            <a href="#" className="text-gray-400 hover:text-primary-400 text-sm transition-colors">
-              Términos de Uso
-            </a>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

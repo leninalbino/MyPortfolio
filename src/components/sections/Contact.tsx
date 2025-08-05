@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import AnimatedSection from '../ui/AnimatedSection';
 
 const Contact = () => {
-  // REEMPLAZA "YOUR_FORM_ID" con tu ID real de Formspree
   const [state, handleSubmit] = useForm("xpwlyypw");
 
   if (state.succeeded) {

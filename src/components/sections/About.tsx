@@ -2,157 +2,109 @@ import { motion } from 'framer-motion';
 import AnimatedSection from '../ui/AnimatedSection';
 
 const About = () => {
-  const statsVariants = {
-    hidden: { scale: 0 },
-    visible: {
-      scale: 1,
-      transition: {
-        stiffness: 100,
-        damping: 15
-      }
-    }
-  };
-
-  const containerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+  const stats = [
+    { number: '3+', label: 'Años de experiencia' },
+    { number: '15+', label: 'Proyectos completados' },
+    { number: '8+', label: 'Tecnologías dominadas' },
+    { number: '100%', label: 'Dedicación' },
+  ];
 
   return (
-    <section id="about" className="section-padding bg-gray-50">
+    <section id="about" className="section-padding bg-white dark:bg-gray-800 transition-colors duration-300">
       <div className="container-custom">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Imagen/Avatar animada */}
+        <AnimatedSection className="text-center mb-12 lg:mb-16">
+          <motion.span 
+            className="text-primary-600 dark:text-primary-400 font-semibold text-sm sm:text-base lg:text-lg uppercase tracking-wider"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Sobre mí
+          </motion.span>
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4 lg:mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            Desarrollador Full Stack apasionado por crear soluciones innovadoras
+          </motion.h2>
+        </AnimatedSection>
+
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+          {/* Contenido principal */}
           <AnimatedSection direction="left" delay={0.2}>
-            <div className="relative">
-              <motion.div 
-                className="w-80 h-80 bg-gradient-to-br from-primary-500 to-blue-600 rounded-2xl mx-auto relative overflow-hidden shadow-2xl"
-                whileHover={{ 
-                  scale: 1.05,
-                  rotate: 2,
-                  transition: { duration: 0.3 }
-                }}
-              >
-                <div className="absolute inset-4 bg-white rounded-xl flex items-center justify-center">
-                  <motion.span 
-                    className="text-6xl"
-                    animate={{
-                      rotate: [0, 10, -10, 0],
-                      transition: {
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                      }
-                    }}
-                  >
-                    👨‍💻
-                  </motion.span>
-                </div>
-              </motion.div>
+            <div className="space-y-6">
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                Soy un desarrollador Full Stack con <span className="font-semibold text-primary-600 dark:text-primary-400">más de 3 años de experiencia</span> 
+                creando aplicaciones web robustas y escalables. Mi pasión radica en transformar ideas complejas en soluciones digitales elegantes y funcionales.
+              </p>
               
-              {/* Decoraciones animadas */}
-              <motion.div 
-                className="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400 rounded-full opacity-80"
-                animate={{
-                  y: [-5, 5, -5],
-                  x: [-2, 2, -2],
-                  transition: {
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }
-                }}
-              />
-              <motion.div 
-                className="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-400 rounded-full opacity-80"
-                animate={{
-                  y: [5, -5, 5],
-                  x: [2, -2, 2],
-                  transition: {
-                    duration: 2.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5
-                  }
-                }}
-              />
-            </div>
-          </AnimatedSection>
-
-          {/* Contenido */}
-          <div className="space-y-6">
-            <AnimatedSection direction="right" delay={0.3}>
-              <div>
-                <span className="text-primary-600 font-semibold text-lg">Sobre mí</span>
-                <h2 className="text-4xl font-bold text-gray-900 mt-2 mb-6">
-                  Desarrollador Full Stack con experiencia en proyectos empresariales
-                </h2>
-              </div>
-            </AnimatedSection>
-
-            <AnimatedSection direction="right" delay={0.4}>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Desarrollador Full Stack con más de 3 años de experiencia en proyectos de gran escala. 
-                He trabajado en NTT Data y Stefanini para Telefónica, desarrollando y manteniendo 
-                aplicaciones críticas como Mi Movistar App y el sistema web de Trazabilidad.
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                Especializado en tecnologías modernas como <span className="font-semibold text-primary-600 dark:text-primary-400">React, Angular, TypeScript, Python, C#</span> y <span className="font-semibold text-primary-600 dark:text-primary-400">Java</span>. 
+                Me enfoco en escribir código limpio, mantenible y en seguir las mejores prácticas de desarrollo.
               </p>
-            </AnimatedSection>
 
-            <AnimatedSection direction="right" delay={0.5}>
-              <p className="text-lg text-gray-600 leading-relaxed">
-                Actualmente en Joyit, trabajo para Obengroup desarrollando soluciones de manufactura 
-                con React.js, C# y MySQL en AWS. Mi experiencia incluye migraciones tecnológicas, 
-                desde React a Angular, y desarrollo de aplicaciones híbridas.
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
+                Cuando no estoy programando, me gusta mantenerme actualizado con las últimas tendencias tecnológicas, 
+                contribuir a proyectos open source y compartir conocimiento con la comunidad de desarrolladores.
               </p>
-            </AnimatedSection>
 
-            {/* Estadísticas actualizadas */}
-            <AnimatedSection delay={0.6}>
+              {/* Call to action */}
               <motion.div 
-                className="grid grid-cols-3 gap-6 pt-6"
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
+                className="flex flex-col sm:flex-row gap-4 pt-6"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
               >
-                {[
-                  { number: '3+', label: 'Años Experiencia' },
-                  { number: '3', label: 'Empresas' },
-                  { number: '8+', label: 'Tecnologías' }
-                ].map((stat, index) => (
-                  <motion.div 
-                    key={index}
-                    className="text-center"
-                    variants={statsVariants}
-                    whileHover={{ 
-                      scale: 1.1,
-                      transition: { duration: 0.2 }
-                    }}
-                  >
-                    <div className="text-3xl font-bold text-primary-600">{stat.number}</div>
-                    <div className="text-gray-600">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.7}>
-              <div className="pt-4">
                 <motion.a 
                   href="#contact" 
-                  className="btn-primary"
-                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="btn-primary text-center"
+                  whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Trabajemos juntos
                 </motion.a>
-              </div>
-            </AnimatedSection>
-          </div>
+                <motion.a 
+                  href="/cv.pdf" 
+                  target="_blank"
+                  className="btn-secondary text-center"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Descargar CV
+                </motion.a>
+              </motion.div>
+            </div>
+          </AnimatedSection>
+
+          {/* Stats */}
+          <AnimatedSection direction="right" delay={0.4}>
+            <div className="grid grid-cols-2 gap-6 lg:gap-8">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-900/20"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 * index }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                >
+                  <motion.h3 
+                    className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.6, delay: 0.3 + (0.1 * index), type: "spring" }}
+                  >
+                    {stat.number}
+                  </motion.h3>
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 font-medium">
+                    {stat.label}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </AnimatedSection>
         </div>
       </div>
     </section>

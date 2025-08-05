@@ -18,7 +18,6 @@ const Skills = () => {
         { name: "Bootstrap", level: 80, icon: "📦" },
         { name: "Sass", level: 75, icon: "🧶" },
         { name: "ngPrime", level: 70, icon: "🔶" },
-        //{ name: "Next.js", level: 82, icon: "▲" }
       ]
     },
     {
@@ -48,56 +47,92 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="section-padding bg-gray-50">
+    <section id="skills" className="section-padding bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container-custom">
-        <AnimatedSection className="text-center mb-16">
-          <span className="text-primary-600 font-semibold text-lg">Habilidades</span>
-          <h2 className="text-4xl font-bold text-gray-900 mt-2 mb-4">
+        <AnimatedSection className="text-center mb-12 lg:mb-16">
+          <motion.span 
+            className="text-primary-600 dark:text-primary-400 font-semibold text-sm sm:text-base lg:text-lg uppercase tracking-wider"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            Habilidades
+          </motion.span>
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4 lg:mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             Tecnologías y Herramientas
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Las tecnologías con las que trabajo día a día para crear 
-            soluciones digitales innovadoras.
-          </p>
+          </motion.h2>
+          <motion.p 
+            className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            Las tecnologías con las que trabajo día a día para crear soluciones digitales innovadoras.
+          </motion.p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {skillsData.map((category, categoryIndex) => (
-            <AnimatedSection key={categoryIndex} delay={categoryIndex * 0.2}>
+            <AnimatedSection key={categoryIndex} delay={categoryIndex * 0.2} className="h-full">
               <motion.div 
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="bg-white dark:bg-gray-800 rounded-2xl p-6 lg:p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-2xl dark:hover:shadow-gray-900/20 transition-all duration-300 h-full"
                 whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               >
-                <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-2xl mb-6 mx-auto`}>
+                <motion.div 
+                  className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-2xl mb-6 mx-auto shadow-lg`}
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
                   {category.icon}
-                </div>
+                </motion.div>
                 
-                <h3 className="text-xl font-bold text-gray-900 text-center mb-6">
+                <h3 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">
                   {category.category}
                 </h3>
 
-                <div className="space-y-4">
+                <div className="space-y-3 lg:space-y-4">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div 
                       key={skillIndex}
-                      className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      whileHover={{ scale: 1.02 }}
+                      className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors group"
+                      whileHover={{ scale: 1.02, x: 5 }}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 + (skillIndex * 0.05) }}
                     >
                       <div className="flex items-center space-x-3">
-                        <span className="text-lg">{skill.icon}</span>
-                        <span className="font-medium text-gray-800">{skill.name}</span>
+                        <motion.span 
+                          className="text-lg"
+                          whileHover={{ scale: 1.2 }}
+                          transition={{ type: "spring", stiffness: 400 }}
+                        >
+                          {skill.icon}
+                        </motion.span>
+                        <span className="font-medium text-gray-800 dark:text-gray-200 text-sm lg:text-base">
+                          {skill.name}
+                        </span>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div className="w-16 lg:w-20 h-2 bg-gray-200 dark:bg-gray-600 rounded-full overflow-hidden">
                           <motion.div 
                             className={`h-full bg-gradient-to-r ${category.color} rounded-full`}
                             initial={{ width: 0 }}
                             whileInView={{ width: `${skill.level}%` }}
-                            transition={{ duration: 1, delay: skillIndex * 0.1 }}
+                            transition={{ duration: 1.2, delay: 0.5 + (skillIndex * 0.1) }}
                             viewport={{ once: true }}
                           />
                         </div>
-                        <span className="text-sm font-medium text-gray-600">{skill.level}%</span>
+                        <span className="text-xs lg:text-sm font-medium text-gray-600 dark:text-gray-400 min-w-[2.5rem]">
+                          {skill.level}%
+                        </span>
                       </div>
                     </motion.div>
                   ))}
@@ -106,6 +141,26 @@ const Skills = () => {
             </AnimatedSection>
           ))}
         </div>
+
+        {/* Call to action */}
+        <motion.div 
+          className="text-center mt-12 lg:mt-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 mb-6">
+            Siempre en constante aprendizaje y adaptándome a nuevas tecnologías
+          </p>
+          <motion.a 
+            href="#projects" 
+            className="btn-primary"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Ver mis proyectos
+          </motion.a>
+        </motion.div>
       </div>
     </section>
   );
