@@ -1,13 +1,9 @@
 import { motion } from 'framer-motion';
 import AnimatedSection from '../ui/AnimatedSection';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const About = () => {
-  const stats = [
-    { number: '3+', label: 'Años de experiencia' },
-    { number: '15+', label: 'Proyectos completados' },
-    { number: '8+', label: 'Tecnologías dominadas' },
-    { number: '100%', label: 'Dedicación' },
-  ];
+  const { t } = useLanguage();
 
   return (
     <section id="about" className="section-padding bg-white dark:bg-gray-800 transition-colors duration-300">
@@ -19,7 +15,7 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Sobre mí
+            {t('about.title')}
           </motion.span>
           <motion.h2 
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4 lg:mb-6"
@@ -27,80 +23,94 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Desarrollador Full Stack apasionado por crear soluciones innovadoras
+            {t('about.subtitle')}
           </motion.h2>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          {/* Contenido principal */}
-          <AnimatedSection direction="left" delay={0.2}>
-            <div className="space-y-6">
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Soy un desarrollador Full Stack con <span className="font-semibold text-primary-600 dark:text-primary-400">más de 3 años de experiencia</span> 
-                creando aplicaciones web robustas y escalables. Mi pasión radica en transformar ideas complejas en soluciones digitales elegantes y funcionales.
-              </p>
-              
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Especializado en tecnologías modernas como <span className="font-semibold text-primary-600 dark:text-primary-400">React, Angular, TypeScript, Python, C#</span> y <span className="font-semibold text-primary-600 dark:text-primary-400">Java</span>. 
-                Me enfoco en escribir código limpio, mantenible y en seguir las mejores prácticas de desarrollo.
-              </p>
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Text Content */}
+          <AnimatedSection className="space-y-6 lg:space-y-8">
+            <motion.p 
+              className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {t('about.paragraph1')}
+            </motion.p>
 
-              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-300 leading-relaxed">
-                Cuando no estoy programando, me gusta mantenerme actualizado con las últimas tendencias tecnológicas, 
-                contribuir a proyectos open source y compartir conocimiento con la comunidad de desarrolladores.
-              </p>
+            <motion.p 
+              className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              {t('about.paragraph2')}
+            </motion.p>
 
-              {/* Call to action */}
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 pt-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
+            <motion.p 
+              className="text-base sm:text-lg text-gray-600 dark:text-gray-400 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              {t('about.paragraph3')}
+            </motion.p>
+
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 pt-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <motion.a 
+                href="#contact" 
+                className="btn-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <motion.a 
-                  href="#contact" 
-                  className="btn-primary text-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Trabajemos juntos
-                </motion.a>
-                <motion.a 
-                  href="/cv.pdf" 
-                  target="_blank"
-                  className="btn-secondary text-center"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Descargar CV
-                </motion.a>
-              </motion.div>
-            </div>
+                {t('about.workTogether')}
+              </motion.a>
+              <motion.a 
+                href="/cv-lenin-albino.pdf" 
+                download
+                className="btn-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t('about.downloadCV')}
+              </motion.a>
+            </motion.div>
           </AnimatedSection>
 
-          {/* Stats */}
-          <AnimatedSection direction="right" delay={0.4}>
+          {/* Stats Grid */}
+          <AnimatedSection delay={0.3}>
             <div className="grid grid-cols-2 gap-6 lg:gap-8">
-              {stats.map((stat, index) => (
+              {[
+                { number: "3+", label: t('about.stats.experience') },
+                { number: "15+", label: t('about.stats.projects') },
+                { number: "10+", label: t('about.stats.technologies') },
+                { number: "100%", label: t('about.stats.dedication') }
+              ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="text-center p-6 bg-gray-50 dark:bg-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 transition-all duration-300 hover:shadow-lg dark:hover:shadow-gray-900/20"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
-                  whileHover={{ scale: 1.05, y: -5 }}
+                  className="text-center p-6 lg:p-8 bg-gray-50 dark:bg-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 hover:shadow-lg dark:hover:shadow-gray-900/20 transition-all duration-300"
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6, delay: 0.4 + (index * 0.1) }}
+                  whileHover={{ y: -5, scale: 1.05 }}
                 >
-                  <motion.h3 
-                    className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2"
+                  <motion.div 
+                    className="text-3xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.3 + (0.1 * index), type: "spring" }}
+                    transition={{ type: "spring", stiffness: 200, delay: 0.6 + (index * 0.1) }}
                   >
                     {stat.number}
-                  </motion.h3>
-                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 font-medium">
+                  </motion.div>
+                  <div className="text-sm lg:text-base text-gray-600 dark:text-gray-400 font-medium">
                     {stat.label}
-                  </p>
+                  </div>
                 </motion.div>
               ))}
             </div>

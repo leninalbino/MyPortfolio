@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -25,10 +27,10 @@ const Footer = () => {
   ];
 
   const quickLinks = [
-    { name: 'Sobre mí', href: '#about' },
-    { name: 'Proyectos', href: '#projects' },
-    { name: 'Habilidades', href: '#skills' },
-    { name: 'Contacto', href: '#contact' }
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.skills'), href: '#skills' },
+    { name: t('nav.contact'), href: '#contact' }
   ];
 
   return (
@@ -51,7 +53,7 @@ const Footer = () => {
                 Lenin
               </motion.h3>
               <p className="text-gray-400 leading-relaxed mb-6">
-                Desarrollador Full Stack apasionado por crear soluciones digitales innovadoras y escalables.
+                {t('footer.description')}
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map((link) => (
@@ -77,7 +79,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h4 className="text-lg font-semibold mb-6">Enlaces rápidos</h4>
+              <h4 className="text-lg font-semibold mb-6">{t('footer.quickLinks')}</h4>
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
                   <li key={link.name}>
@@ -100,7 +102,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h4 className="text-lg font-semibold mb-6">Tecnologías</h4>
+              <h4 className="text-lg font-semibold mb-6">{t('footer.technologies')}</h4>
               <ul className="space-y-3 text-gray-400">
                 <li>React & Angular</li>
                 <li>TypeScript</li>
@@ -116,7 +118,7 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h4 className="text-lg font-semibold mb-6">Contacto</h4>
+              <h4 className="text-lg font-semibold mb-6">{t('footer.contact')}</h4>
               <div className="space-y-3 text-gray-400">
                 <motion.a
                   href="mailto:leninalbino@gmail.com"
@@ -128,11 +130,11 @@ const Footer = () => {
                 </motion.a>
                 <p className="flex items-center">
                   <span className="mr-3">📍</span>
-                  Disponible para trabajar remotamente
+                  {t('footer.location')}
                 </p>
                 <p className="flex items-center">
                   <span className="mr-3">🕒</span>
-                  Respuesta en menos de 24h
+                  {t('footer.response')}
                 </p>
               </div>
             </motion.div>
@@ -148,11 +150,11 @@ const Footer = () => {
         >
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
             <p className="text-gray-400 text-sm lg:text-base">
-              © {currentYear} Lenin Albino. Todos los derechos reservados.
+              © {currentYear} Lenin Albino. {t('footer.rights')}
             </p>
             
             <div className="flex items-center space-x-4 text-sm text-gray-400">
-              <span>Hecho con</span>
+              <span>{t('footer.madeWith')}</span>
               <motion.span 
                 className="text-red-500"
                 animate={{ 
@@ -166,7 +168,7 @@ const Footer = () => {
               >
                 ❤️
               </motion.span>
-              <span>y</span>
+              <span>{t('footer.and')}</span>
               <motion.span 
                 className="text-blue-400"
                 whileHover={{ scale: 1.1 }}

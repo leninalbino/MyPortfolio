@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import AnimatedSection from '../ui/AnimatedSection';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Skills = () => {
+  const { t } = useLanguage();
+
   const skillsData = [
     {
       category: "Frontend",
@@ -56,7 +59,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Habilidades
+            {t('skills.title')}
           </motion.span>
           <motion.h2 
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4 lg:mb-6"
@@ -64,7 +67,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Tecnologías y Herramientas
+            {t('skills.subtitle')}
           </motion.h2>
           <motion.p 
             className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
@@ -72,7 +75,7 @@ const Skills = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Las tecnologías con las que trabajo día a día para crear soluciones digitales innovadoras.
+            {t('skills.description')}
           </motion.p>
         </AnimatedSection>
 
@@ -150,7 +153,7 @@ const Skills = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 mb-6">
-            Siempre en constante aprendizaje y adaptándome a nuevas tecnologías
+            {t('skills.callToAction')}
           </p>
           <motion.a 
             href="#projects" 
@@ -158,7 +161,7 @@ const Skills = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Ver mis proyectos
+            {t('skills.viewProjects')}
           </motion.a>
         </motion.div>
       </div>

@@ -1,7 +1,10 @@
 import { motion } from 'framer-motion';
 import AnimatedSection from '../ui/AnimatedSection';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Projects = () => {
+  const { t } = useLanguage();
+
   const projects = [
     {
       id: 1,
@@ -71,7 +74,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Experiencia Profesional
+            {t('projects.title')}
           </motion.span>
           <motion.h2 
             className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4 lg:mb-6"
@@ -79,7 +82,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Proyectos en los que he trabajado
+            {t('projects.subtitle')}
           </motion.h2>
           <motion.p 
             className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
@@ -87,7 +90,7 @@ const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Mi experiencia profesional en empresas líderes del sector tecnológico, trabajando para clientes importantes.
+            {t('projects.description')}
           </motion.p>
         </AnimatedSection>
 
@@ -265,7 +268,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Otras experiencias
+              {t('projects.otherProjects')}
             </motion.h3>
             
             <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
@@ -354,7 +357,7 @@ const Projects = () => {
           transition={{ duration: 0.6, delay: 0.8 }}
         >
           <p className="text-base lg:text-lg text-gray-600 dark:text-gray-400 mb-6">
-            ¿Quieres conocer más sobre mi experiencia profesional?
+            {t('projects.callToAction')}
           </p>
           <motion.a 
             href="#contact" 
@@ -362,7 +365,7 @@ const Projects = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Conversemos sobre oportunidades
+            {t('projects.opportunities')}
           </motion.a>
         </motion.div>
       </div>

@@ -1,8 +1,10 @@
 import { useForm, ValidationError } from '@formspree/react';
 import { motion } from 'framer-motion';
 import AnimatedSection from '../ui/AnimatedSection';
+import { useLanguage } from '../../contexts/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [state, handleSubmit] = useForm("xpwlyypw");
 
   if (state.succeeded) {
@@ -17,16 +19,16 @@ const Contact = () => {
             >
               <span className="text-6xl mb-4 block">✅</span>
               <h2 className="text-3xl font-bold text-white mb-4">
-                ¡Mensaje enviado!
+                {t('contact.form.success')}
               </h2>
               <p className="text-gray-300 mb-6">
-                Gracias por contactarme. Te responderé lo antes posible.
+                {t('contact.successMessage')}
               </p>
               <button
                 onClick={() => window.location.reload()}
                 className="btn-primary"
               >
-                Enviar otro mensaje
+                {t('contact.sendAnother')}
               </button>
             </motion.div>
           </div>
@@ -36,24 +38,41 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="section-padding bg-gray-900">
+    <section id="contact" className="section-padding bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <div className="container-custom">
-        <AnimatedSection className="text-center mb-16">
-          <span className="text-primary-400 font-semibold text-lg">Contacto</span>
-          <h2 className="text-4xl font-bold text-white mt-2 mb-4">
-            ¡Trabajemos juntos!
-          </h2>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            ¿Tienes un proyecto en mente? Me encantaría conocer más detalles.
-          </p>
+        <AnimatedSection className="text-center mb-12 lg:mb-16">
+          <motion.span 
+            className="text-primary-600 dark:text-primary-400 font-semibold text-sm sm:text-base lg:text-lg uppercase tracking-wider"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {t('contact.title')}
+          </motion.span>
+          <motion.h2 
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mt-2 mb-4 lg:mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            {t('contact.subtitle')}
+          </motion.h2>
+          <motion.p 
+            className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {t('contact.description')}
+          </motion.p>
         </AnimatedSection>
 
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Información de contacto */}
           <AnimatedSection direction="left" delay={0.2}>
             <div className="space-y-8">
-              <h3 className="text-2xl font-bold text-white mb-6">
-                Información de contacto
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+                {t('contact.info.title')}
               </h3>
               
               <motion.div className="flex items-center space-x-4" whileHover={{ x: 5 }}>
@@ -61,8 +80,8 @@ const Contact = () => {
                   <span className="text-xl">📧</span>
                 </div>
                 <div>
-                  <p className="text-gray-400">Email</p>
-                  <p className="text-white font-medium">leninalbino@gmail.com</p>
+                  <p className="text-gray-600 dark:text-gray-400">{t('contact.info.emailLabel')}</p>
+                  <p className="text-gray-900 dark:text-white font-medium">leninalbino@gmail.com</p>
                 </div>
               </motion.div>
 
@@ -71,12 +90,12 @@ const Contact = () => {
                   <span className="text-xl">💼</span>
                 </div>
                 <div>
-                  <p className="text-gray-400">LinkedIn</p>
+                  <p className="text-gray-600 dark:text-gray-400">LinkedIn</p>
                   <a 
                     href="https://www.linkedin.com/in/lenin-leonor-albino-chavez-227527209/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-400 hover:text-primary-300 transition-colors"
+                    className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
                   >
                     Lenin Leonor Albino Chavez
                   </a>
@@ -88,12 +107,12 @@ const Contact = () => {
                   <span className="text-xl">🐱</span>
                 </div>
                 <div>
-                  <p className="text-gray-400">GitHub</p>
+                  <p className="text-gray-600 dark:text-gray-400">GitHub</p>
                   <a 
                     href="https://github.com/leninalbino"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-primary-400 hover:text-primary-300 transition-colors"
+                    className="text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-colors"
                   >
                     @leninalbino
                   </a>
@@ -104,77 +123,77 @@ const Contact = () => {
 
           {/* Formulario */}
           <AnimatedSection direction="right" delay={0.4}>
-            <div className="bg-gray-800 p-8 rounded-2xl">
+            <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-white font-medium mb-2">
-                      Nombre *
+                    <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                      {t('contact.form.name')} *
                     </label>
                     <input
                       type="text"
                       name="name"
                       required
-                      className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
-                      placeholder="Tu nombre completo"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                      placeholder={t('contact.form.name')}
                     />
                     <ValidationError 
                       prefix="Name" 
                       field="name"
                       errors={state.errors}
-                      className="text-red-400 text-sm mt-1"
+                      className="text-red-500 text-sm mt-1"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-white font-medium mb-2">
-                      Email *
+                    <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                      {t('contact.form.email')} *
                     </label>
                     <input
                       type="email"
                       name="email"
                       required
-                      className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
-                      placeholder="tu@email.com"
+                      className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                      placeholder={t('contact.form.email')}
                     />
                     <ValidationError 
                       prefix="Email" 
                       field="email"
                       errors={state.errors}
-                      className="text-red-400 text-sm mt-1"
+                      className="text-red-500 text-sm mt-1"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-white font-medium mb-2">
-                    Asunto *
+                  <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                    {t('contact.form.subject')} *
                   </label>
                   <input
                     type="text"
                     name="subject"
                     required
-                    className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
-                    placeholder="¿De qué se trata tu proyecto?"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
+                    placeholder={t('contact.form.subject')}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-white font-medium mb-2">
-                    Mensaje *
+                  <label className="block text-gray-900 dark:text-white font-medium mb-2">
+                    {t('contact.form.message')} *
                   </label>
                   <textarea
                     name="message"
                     required
                     rows={6}
-                    className="w-full px-4 py-3 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all resize-none"
-                    placeholder="Cuéntame sobre tu proyecto..."
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
+                    placeholder={t('contact.form.message')}
                   />
                   <ValidationError 
                     prefix="Message" 
                     field="message"
                     errors={state.errors}
-                    className="text-red-400 text-sm mt-1"
+                    className="text-red-500 text-sm mt-1"
                   />
                 </div>
 
@@ -185,14 +204,7 @@ const Contact = () => {
                   whileHover={{ scale: state.submitting ? 1 : 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {state.submitting ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Enviando...
-                    </>
-                  ) : (
-                    'Enviar Mensaje'
-                  )}
+                  {state.submitting ? t('contact.form.sending') : t('contact.form.send')}
                 </motion.button>
               </form>
             </div>
