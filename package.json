@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --ext ts,tsx --fix",
+    "type-check": "tsc --noEmit",
     "preview": "vite preview",
+    "pre-deploy": "npm run type-check && npm run lint && npm run build",
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
