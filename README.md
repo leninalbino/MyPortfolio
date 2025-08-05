@@ -1,30 +1,62 @@
-# React + TypeScript + Vite
+# 🚀 Mi Portafolio Personal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portafolio web desarrollado con React, TypeScript, Tailwind CSS y Framer Motion.
 
-Currently, two official plugins are available:
+## 🛠️ Tecnologías Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Frontend:** React 18, TypeScript
+- **Styling:** Tailwind CSS
+- **Animaciones:** Framer Motion
+- **Build Tool:** Vite
+- **Deployment:** [Vercel/Netlify]
 
-## Expanding the ESLint configuration
+## ✨ Características
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- ✅ Diseño responsive y moderno
+- ✅ Animaciones suaves con Framer Motion
+- ✅ Optimizado para SEO
+- ✅ Formulario de contacto funcional
+- ✅ Secciones dinámicas
+- ✅ Efectos de hover y scroll
 
-- Configure the top-level `parserOptions` property like this:
+## 🚀 Instalación y Uso
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+# Clonar el repositorio
+git clone https://github.com/leninalbino/mi-portafolio.git
+
+# Navegar al directorio
+cd mi-portafolio
+
+# Instalar dependencias
+npm install
+
+# Ejecutar en desarrollo
+npm run dev
+
+# Build para producción
+npm run build
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## 📂 Estructura del Proyecto
+
+```
+src/
+├── components/
+│   ├── layout/          # Header, Footer
+│   ├── sections/        # Secciones principales
+│   └── ui/             # Componentes reutilizables
+├── hooks/              # Custom hooks
+└── styles/             # Estilos globales
+```
+
+## 👨‍💻 Desarrollado por
+
+**Lenin Leonor Albino Chavez**
+- 📧 Email: leninalbino@gmail.com
+- 💼 LinkedIn: [lenin-leonor-albino-chavez](https://www.linkedin.com/in/lenin-leonor-albino-chavez-227527209/)
+- 🐱 GitHub: [leninalbino](https://github.com/leninalbino?tab=repositories)
+
+---
+
+⭐ Si te gusta este proyecto, ¡no olvides darle una estrella!
