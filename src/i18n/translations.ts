@@ -108,7 +108,7 @@ export const translations = {
       paragraph2: 'Specialized in modern technologies like React, Angular, TypeScript, Python, C# and Java. I focus on writing clean, maintainable code and following development best practices.',
       paragraph3: 'When I\'m not coding, I like to stay updated with the latest tech trends, contribute to open source projects and share knowledge with the developer community.',
       workTogether: 'Let\'s work together',
-      downloadCV: 'Download CV',
+      downloadCV: 'Download Resume',
       stats: {
         experience: 'Years of experience',
         projects: 'Completed projects',
