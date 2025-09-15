@@ -8,6 +8,7 @@ import Projects from './components/sections/Projects';
 import Skills from './components/sections/Skills';
 import Contact from './components/sections/Contact';
 import Footer from './components/layout/Footer';
+import ChatBot from './components/ui/ChatBot';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Skills />
           <Contact />
           <Footer />
+          <ChatBot />
         </div>
       </LanguageProvider>
     </ThemeProvider>
