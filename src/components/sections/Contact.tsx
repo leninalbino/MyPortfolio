@@ -38,7 +38,34 @@ const Contact = () => {
   }
 
   return (
-    <section id="contact" className="section-padding bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="contact" className="relative section-padding bg-gradient-to-br from-gray-50 via-indigo-50/20 to-white dark:from-gray-900 dark:via-indigo-900/10 dark:to-gray-800 transition-colors duration-300 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-20 right-20 w-40 h-40 bg-gradient-to-br from-primary-300/30 to-secondary-300/30 dark:from-primary-300/20 dark:to-secondary-300/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-20 left-20 w-32 h-32 bg-gradient-to-br from-accent-300/30 to-primary-300/30 dark:from-accent-300/20 dark:to-primary-300/20 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+      </div>
       <div className="container-custom">
         <AnimatedSection className="text-center mb-12 lg:mb-16">
           <motion.span 
@@ -75,20 +102,34 @@ const Contact = () => {
                 {t('contact.info.title')}
               </h3>
               
-              <motion.div className="flex items-center space-x-4" whileHover={{ x: 5 }}>
-                <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+              <motion.div 
+                className="flex items-center space-x-4 p-4 glass-card hover:shadow-lg transition-all duration-300 group" 
+                whileHover={{ x: 8, scale: 1.02 }}
+              >
+                <motion.div 
+                  className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <span className="text-xl">📧</span>
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-gray-600 dark:text-gray-400">{t('contact.info.emailLabel')}</p>
                   <p className="text-gray-900 dark:text-white font-medium">leninalbino@gmail.com</p>
                 </div>
               </motion.div>
 
-              <motion.div className="flex items-center space-x-4" whileHover={{ x: 5 }}>
-                <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+              <motion.div 
+                className="flex items-center space-x-4 p-4 glass-card hover:shadow-lg transition-all duration-300 group" 
+                whileHover={{ x: 8, scale: 1.02 }}
+              >
+                <motion.div 
+                  className="w-12 h-12 bg-gradient-to-br from-accent-500 to-primary-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <span className="text-xl">💼</span>
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-gray-600 dark:text-gray-400">LinkedIn</p>
                   <a 
@@ -102,10 +143,17 @@ const Contact = () => {
                 </div>
               </motion.div>
 
-              <motion.div className="flex items-center space-x-4" whileHover={{ x: 5 }}>
-                <div className="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center">
+              <motion.div 
+                className="flex items-center space-x-4 p-4 glass-card hover:shadow-lg transition-all duration-300 group" 
+                whileHover={{ x: 8, scale: 1.02 }}
+              >
+                <motion.div 
+                  className="w-12 h-12 bg-gradient-to-br from-secondary-500 to-accent-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <span className="text-xl">🐱</span>
-                </div>
+                </motion.div>
                 <div>
                   <p className="text-gray-600 dark:text-gray-400">GitHub</p>
                   <a 
@@ -123,7 +171,18 @@ const Contact = () => {
 
           {/* Formulario */}
           <AnimatedSection direction="right" delay={0.4}>
-            <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-lg">
+            <motion.div 
+              className="glass-card p-8 shadow-xl relative overflow-hidden group"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Animated gradient overlay */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-secondary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileHover={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              />
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
@@ -200,14 +259,24 @@ const Contact = () => {
                 <motion.button
                   type="submit"
                   disabled={state.submitting}
-                  className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-gray-600 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                  className="relative w-full btn-primary disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center overflow-hidden"
                   whileHover={{ scale: state.submitting ? 1 : 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  {state.submitting ? t('contact.form.sending') : t('contact.form.send')}
+                  {/* Loading animation */}
+                  {state.submitting && (
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-primary-600 via-secondary-600 to-primary-600"
+                      animate={{ x: ['-100%', '100%'] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    />
+                  )}
+                  <span className="relative z-10">
+                    {state.submitting ? t('contact.form.sending') : t('contact.form.send')}
+                  </span>
                 </motion.button>
               </form>
-            </div>
+            </motion.div>
           </AnimatedSection>
         </div>
       </div>

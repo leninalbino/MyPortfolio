@@ -54,11 +54,20 @@ const Header = () => {
               e.preventDefault();
               handleNavClick('#home');
             }}
-            className="text-2xl lg:text-3xl font-bold text-primary-600 dark:text-primary-400"
+            className="flex items-center space-x-2 group"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Lenin
+            <motion.div
+              className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
+              whileHover={{ rotateY: 180 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-white font-bold text-lg">L</span>
+            </motion.div>
+            <span className="text-2xl lg:text-3xl font-bold gradient-text hidden sm:block">
+              Lenin
+            </span>
           </motion.a>
 
           {/* Desktop Navigation */}

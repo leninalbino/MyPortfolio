@@ -8,59 +8,73 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Sistema de Manufactura - Obengroup',
-      description: 'Aplicación web para gestión de procesos de manufactura, control de inventarios y seguimiento de producción en tiempo real para empresa industrial.',
-      image: '🏭', // Placeholder - manufactura
-      technologies: ['React', 'C#', 'MySQL', 'AWS'],
-      company: 'Joyit',
-      client: 'Obengroup',
-      period: '2024 - Actualidad',
+      title: t('projects.list.deitta.title'),
+      description: t('projects.list.deitta.description'),
+      image: '🛒', // Placeholder - marketplace
+      technologies: ['Angular 18', 'TypeScript', 'AWS Cognito', 'Material Design'],
+      company: t('projects.list.deitta.company'),
+      client: t('projects.list.deitta.client'),
+      period: t('projects.list.deitta.period'),
       liveUrl: '#', // Privado
       githubUrl: '#', // Privado
       featured: true,
-      type: 'Desarrollo Full Stack'
+      type: t('projects.list.deitta.type')
     },
     {
       id: 2,
-      title: 'Migración Web Trazabilidad - Telefónica',
-      description: 'Migración completa de aplicación web de trazabilidad de React a Angular, mejorando performance y mantenibilidad del sistema.',
-      image: '🔄', // Placeholder - migración
-      technologies: ['Angular', 'TypeScript', 'Bootstrap', 'REST APIs'],
-      company: 'Stefanini',
-      client: 'Telefónica',
-      period: '2023 - 2024',
+      title: t('projects.list.obengroup.title'),
+      description: t('projects.list.obengroup.description'),
+      image: '🏭', // Placeholder - manufactura
+      technologies: ['React', 'C#', 'MySQL', 'AWS'],
+      company: t('projects.list.obengroup.company'),
+      client: t('projects.list.obengroup.client'),
+      period: t('projects.list.obengroup.period'),
       liveUrl: '#', // Privado
       githubUrl: '#', // Privado
       featured: true,
-      type: 'Migración de Tecnología'
+      type: t('projects.list.obengroup.type')
     },
     {
       id: 3,
-      title: 'App Mi Movistar & Web Trazabilidad',
-      description: 'Desarrollo y mantenimiento de aplicación híbrida Mi Movistar y sistema web de trazabilidad para gestión de servicios telefónicos.',
-      image: '📱', // Placeholder - app móvil
-      technologies: ['React', 'JavaScript', 'HTML5', 'CSS3'],
-      company: 'NTT Data',
-      client: 'Telefónica',
-      period: '2022 - 2023',
+      title: t('projects.list.telefonica_migration.title'),
+      description: t('projects.list.telefonica_migration.description'),
+      image: '🔄', // Placeholder - migración
+      technologies: ['Angular', 'TypeScript', 'Bootstrap', 'REST APIs'],
+      company: t('projects.list.telefonica_migration.company'),
+      client: t('projects.list.telefonica_migration.client'),
+      period: t('projects.list.telefonica_migration.period'),
       liveUrl: '#', // Privado
       githubUrl: '#', // Privado
-      featured: false,
-      type: 'Desarrollo Frontend'
+      featured: true,
+      type: t('projects.list.telefonica_migration.type')
     },
     {
       id: 4,
-      title: 'Proyectos Personales',
-      description: 'Desarrollos personales y proyectos de aprendizaje con diferentes tecnologías del stack completo.',
+      title: t('projects.list.telefonica_app.title'),
+      description: t('projects.list.telefonica_app.description'),
+      image: '📱', // Placeholder - app móvil
+      technologies: ['React', 'JavaScript', 'HTML5', 'CSS3'],
+      company: t('projects.list.telefonica_app.company'),
+      client: t('projects.list.telefonica_app.client'),
+      period: t('projects.list.telefonica_app.period'),
+      liveUrl: '#', // Privado
+      githubUrl: '#', // Privado
+      featured: false,
+      type: t('projects.list.telefonica_app.type')
+    },
+    {
+      id: 5,
+      title: t('projects.list.personal.title'),
+      description: t('projects.list.personal.description'),
       image: '💻', // Placeholder - desarrollo personal
       technologies: ['Python', 'Django', 'PostgreSQL', 'Docker'],
-      company: 'Personal',
-      client: 'Proyectos propios',
-      period: '2021 - Actualidad',
+      company: t('projects.list.personal.company'),
+      client: t('projects.list.personal.client'),
+      period: t('projects.list.personal.period'),
       liveUrl: '#',
       githubUrl: 'https://github.com/leninalbino?tab=repositories',
       featured: false,
-      type: 'Desarrollo Personal'
+      type: t('projects.list.personal.type')
     }
   ];
 
@@ -114,16 +128,57 @@ const Projects = () => {
                       whileHover={{ scale: 1.02 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <div className="aspect-video bg-gradient-to-br from-primary-500 to-primary-700 dark:from-primary-400 dark:to-primary-600 rounded-2xl shadow-2xl flex items-center justify-center border border-gray-200 dark:border-gray-700 group-hover:shadow-3xl transition-all duration-300">
-                        <div className="text-center">
-                          <span className="text-6xl lg:text-8xl block mb-4">{project.image}</span>
-                          <div className="text-white font-semibold text-lg lg:text-xl">
-                            {project.company}
-                          </div>
-                          <div className="text-white/80 text-sm lg:text-base">
-                            Cliente: {project.client}
+                      <div className="relative aspect-video bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 dark:from-indigo-400 dark:via-purple-400 dark:to-cyan-400 rounded-2xl shadow-2xl flex items-center justify-center border border-white/20 group-hover:shadow-3xl transition-all duration-300 overflow-hidden">
+                        {/* Animated background pattern */}
+                        <div className="absolute inset-0 opacity-30">
+                          {[...Array(20)].map((_, i) => (
+                            <motion.div
+                              key={i}
+                              className="absolute w-2 h-2 bg-white/60 dark:bg-white/40 rounded-full"
+                              style={{
+                                left: `${Math.random() * 100}%`,
+                                top: `${Math.random() * 100}%`,
+                              }}
+                              animate={{
+                                y: [0, -20, 0],
+                                opacity: [0.4, 1, 0.4],
+                              }}
+                              transition={{
+                                duration: 3 + Math.random() * 2,
+                                repeat: Infinity,
+                                delay: Math.random() * 2,
+                              }}
+                            />
+                          ))}
+                        </div>
+                        
+                        {/* Glassmorphism overlay */}
+                        <div className="absolute inset-4 bg-white/20 dark:bg-white/10 backdrop-blur-sm rounded-xl border border-white/30 dark:border-white/20 flex items-center justify-center">
+                          <div className="text-center relative z-10">
+                            <motion.span 
+                              className="text-6xl lg:text-8xl block mb-4 drop-shadow-2xl"
+                              whileHover={{ scale: 1.1, rotateY: 180 }}
+                              transition={{ duration: 0.6 }}
+                            >
+                              {project.image}
+                            </motion.span>
+                            <div className="text-white font-bold text-lg lg:text-xl drop-shadow-lg">
+                              {project.company}
+                            </div>
+                            <div className="text-white/90 text-sm lg:text-base drop-shadow-md">
+                              {t('projects.client')} {project.client}
+                            </div>
                           </div>
                         </div>
+                        
+                        {/* Animated border */}
+                        <motion.div
+                          className="absolute inset-0 rounded-2xl border-2 border-white/30"
+                          animate={{ 
+                            borderColor: ['rgba(255,255,255,0.3)', 'rgba(255,255,255,0.6)', 'rgba(255,255,255,0.3)']
+                          }}
+                          transition={{ duration: 2, repeat: Infinity }}
+                        />
                       </div>
                       
                       <motion.div 
@@ -150,7 +205,7 @@ const Projects = () => {
                             className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-3 rounded-full shadow-lg"
                           >
                             <span className="text-xs font-medium">
-                              {project.liveUrl === '#' ? 'Privado' : 'Público'}
+                              {project.liveUrl === '#' ? t('projects.private') : t('projects.public')}
                             </span>
                           </motion.div>
                         </div>
@@ -194,7 +249,7 @@ const Projects = () => {
                           {project.company}
                         </span>
                         <span>•</span>
-                        <span>Cliente: {project.client}</span>
+                        <span>{t('projects.client')} {project.client}</span>
                       </motion.div>
                     </div>
                     
@@ -239,7 +294,7 @@ const Projects = () => {
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                       >
-                        Contactar para más detalles
+{t('projects.contactForDetails')}
                       </motion.a>
                       {project.githubUrl !== '#' && (
                         <motion.a 
@@ -250,7 +305,7 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          Ver repositorio
+{t('projects.viewRepository')}
                         </motion.a>
                       )}
                     </motion.div>
@@ -283,11 +338,21 @@ const Projects = () => {
                   >
                     <div className="text-center mb-6">
                       <motion.div 
-                        className="text-4xl lg:text-5xl mb-4"
-                        whileHover={{ scale: 1.2, rotate: 10 }}
+                        className="relative inline-block mb-4"
+                        whileHover={{ scale: 1.1 }}
                         transition={{ type: "spring", stiffness: 300 }}
                       >
-                        {project.image}
+                        <div className="w-20 h-20 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-2xl flex items-center justify-center shadow-xl">
+                          <motion.span
+                            className="text-3xl lg:text-4xl"
+                            whileHover={{ rotateY: 180 }}
+                            transition={{ duration: 0.6 }}
+                          >
+                            {project.image}
+                          </motion.span>
+                        </div>
+                        {/* Glowing effect */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-secondary-500 rounded-2xl blur-lg opacity-50 -z-10 animate-pulse"></div>
                       </motion.div>
                       
                       <div className="mb-3">
@@ -327,7 +392,7 @@ const Projects = () => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        Consultar
+{t('projects.consult')}
                       </motion.a>
                       {project.githubUrl !== '#' && (
                         <motion.a 
@@ -338,7 +403,7 @@ const Projects = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                         >
-                          GitHub
+{t('projects.github')}
                         </motion.a>
                       )}
                     </div>

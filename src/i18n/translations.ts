@@ -49,8 +49,51 @@ export const translations = {
       github: 'GitHub',
       private: 'Privado',
       public: 'Público',
+      client: 'Cliente:',
       callToAction: '¿Quieres conocer más sobre mi experiencia profesional?',
-      opportunities: 'Conversemos sobre oportunidades'
+      opportunities: 'Conversemos sobre oportunidades',
+      list: {
+        deitta: {
+          title: 'Web Marketplace de Datos - Deitta',
+          description: 'Marketplace completo para compra y venta de datos empresariales con autenticación AWS Cognito, sistema de pedidos, gestión de perfiles y módulos de configuración avanzada.',
+          company: 'Freelance',
+          client: 'Deitta (España)',
+          period: 'Agosto 2025 - Actualidad',
+          type: 'Desarrollo Frontend'
+        },
+        obengroup: {
+          title: 'Sistema de Manufactura - Obengroup',
+          description: 'Aplicación web para gestión de procesos de manufactura, control de inventarios y seguimiento de producción en tiempo real para empresa industrial.',
+          company: 'Joyit',
+          client: 'Obengroup',
+          period: '2024 - 2025',
+          type: 'Desarrollo Full Stack'
+        },
+        telefonica_migration: {
+          title: 'Migración Web Trazabilidad - Telefónica',
+          description: 'Migración completa de aplicación web de trazabilidad de React a Angular, mejorando performance y mantenibilidad del sistema.',
+          company: 'Stefanini',
+          client: 'Telefónica',
+          period: '2023 - 2024',
+          type: 'Migración de Tecnología'
+        },
+        telefonica_app: {
+          title: 'App Mi Movistar & Web Trazabilidad',
+          description: 'Desarrollo y mantenimiento de aplicación híbrida Mi Movistar y sistema web de trazabilidad para gestión de servicios telefónicos.',
+          company: 'NTT Data',
+          client: 'Telefónica',
+          period: '2022 - 2023',
+          type: 'Desarrollo Frontend'
+        },
+        personal: {
+          title: 'Proyectos Personales',
+          description: 'Desarrollos personales y proyectos de aprendizaje con diferentes tecnologías del stack completo.',
+          company: 'Personal',
+          client: 'Proyectos propios',
+          period: '2021 - Actualidad',
+          type: 'Desarrollo Personal'
+        }
+      }
     },
     contact: {
       title: 'Contacto',
@@ -134,8 +177,51 @@ export const translations = {
       github: 'GitHub',
       private: 'Private',
       public: 'Public',
+      client: 'Client:',
       callToAction: 'Want to know more about my professional experience?',
-      opportunities: 'Let\'s talk about opportunities'
+      opportunities: 'Let\'s talk about opportunities',
+      list: {
+        deitta: {
+          title: 'Data Marketplace Web - Deitta',
+          description: 'Complete marketplace for buying and selling business data with AWS Cognito authentication, order system, profile management and advanced configuration modules.',
+          company: 'Freelance',
+          client: 'Deitta (Spain)',
+          period: 'August 2025 - Present',
+          type: 'Frontend Development'
+        },
+        obengroup: {
+          title: 'Manufacturing System - Obengroup',
+          description: 'Web application for manufacturing process management, inventory control and real-time production tracking for industrial company.',
+          company: 'Joyit',
+          client: 'Obengroup',
+          period: '2024 - 2025',
+          type: 'Full Stack Development'
+        },
+        telefonica_migration: {
+          title: 'Traceability Web Migration - Telefónica',
+          description: 'Complete migration of traceability web application from React to Angular, improving system performance and maintainability.',
+          company: 'Stefanini',
+          client: 'Telefónica',
+          period: '2023 - 2024',
+          type: 'Technology Migration'
+        },
+        telefonica_app: {
+          title: 'Mi Movistar App & Traceability Web',
+          description: 'Development and maintenance of Mi Movistar hybrid application and traceability web system for telephone services management.',
+          company: 'NTT Data',
+          client: 'Telefónica',
+          period: '2022 - 2023',
+          type: 'Frontend Development'
+        },
+        personal: {
+          title: 'Personal Projects',
+          description: 'Personal developments and learning projects with different full-stack technologies.',
+          company: 'Personal',
+          client: 'Own projects',
+          period: '2021 - Present',
+          type: 'Personal Development'
+        }
+      }
     },
     contact: {
       title: 'Contact',

@@ -34,7 +34,36 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 dark:bg-black text-white transition-colors duration-300">
+    <footer className="relative bg-gradient-to-br from-gray-800 via-gray-700 to-gray-800 dark:from-gray-900 dark:via-indigo-900/30 dark:to-gray-900 text-white transition-colors duration-300 overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-0 left-1/4 w-64 h-64 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 dark:from-primary-500/10 dark:to-secondary-500/10 rounded-full blur-3xl"
+          animate={{
+            y: [0, -50, 0],
+            x: [0, 50, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-0 right-1/4 w-48 h-48 bg-gradient-to-br from-accent-500/20 to-primary-500/20 dark:from-accent-500/10 dark:to-primary-500/10 rounded-full blur-3xl"
+          animate={{
+            y: [0, 30, 0],
+            x: [0, -30, 0],
+            scale: [1.2, 1, 1.2],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
       <div className="container-custom">
         {/* Contenido principal del footer */}
         <div className="py-12 lg:py-16">
@@ -46,28 +75,45 @@ const Footer = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.h3 
-                className="text-2xl lg:text-3xl font-bold text-primary-400 mb-4"
+              <motion.div
+                className="flex items-center space-x-3 mb-4 group"
                 whileHover={{ scale: 1.05 }}
               >
-                Lenin
-              </motion.h3>
+                <motion.div
+                  className="w-12 h-12 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  whileHover={{ rotateY: 180 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <span className="text-white font-bold text-xl">L</span>
+                </motion.div>
+                <h3 className="text-2xl lg:text-3xl font-bold gradient-text">
+                  Lenin
+                </h3>
+              </motion.div>
               <p className="text-gray-400 leading-relaxed mb-6">
                 {t('footer.description')}
               </p>
               <div className="flex space-x-4">
-                {socialLinks.map((link) => (
+                {socialLinks.map((link, index) => (
                   <motion.a
                     key={link.name}
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-400 hover:text-primary-400 transition-colors duration-200"
-                    whileHover={{ scale: 1.2, y: -2 }}
+                    className="relative p-3 bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 rounded-xl text-gray-400 hover:text-primary-400 transition-colors duration-300 group"
+                    whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                     aria-label={link.name}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
-                    {link.icon}
+                    {/* Glowing effect on hover */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-br from-primary-500/30 to-secondary-500/30 dark:from-primary-500/20 dark:to-secondary-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      whileHover={{ scale: 1.1 }}
+                    />
+                    <span className="relative z-10">{link.icon}</span>
                   </motion.a>
                 ))}
               </div>
@@ -143,7 +189,7 @@ const Footer = () => {
 
         {/* Sección inferior */}
         <motion.div 
-          className="border-t border-gray-800 dark:border-gray-700 py-6 lg:py-8"
+          className="border-t border-gray-600 dark:border-gray-800 py-6 lg:py-8"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.4 }}

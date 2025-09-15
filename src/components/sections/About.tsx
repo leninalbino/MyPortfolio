@@ -20,7 +20,36 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="section-padding bg-white dark:bg-gray-800 transition-colors duration-300">
+    <section id="about" className="relative section-padding bg-gradient-to-br from-white via-indigo-50/30 to-white dark:from-gray-800 dark:via-indigo-900/20 dark:to-gray-800 transition-colors duration-300 overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <motion.div
+          className="absolute top-1/4 left-10 w-32 h-32 bg-gradient-to-br from-primary-200/40 to-secondary-200/40 dark:from-primary-200/30 dark:to-secondary-200/30 rounded-full blur-2xl"
+          animate={{
+            x: [0, 30, 0],
+            y: [0, -20, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-10 w-24 h-24 bg-gradient-to-br from-accent-200/40 to-primary-200/40 dark:from-accent-200/30 dark:to-primary-200/30 rounded-full blur-2xl"
+          animate={{
+            x: [0, -20, 0],
+            y: [0, 15, 0],
+            scale: [1.1, 1, 1.1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+      </div>
       <div className="container-custom">
         <AnimatedSection className="text-center mb-12 lg:mb-16">
           <motion.span 
@@ -109,18 +138,28 @@ const About = () => {
             <div className="grid grid-cols-2 gap-6 lg:gap-8">
               {[
                 { number: "3+", label: t('about.stats.experience') },
-                { number: "15+", label: t('about.stats.projects') },
+                { number: "16+", label: t('about.stats.projects') },
                 { number: "10+", label: t('about.stats.technologies') },
                 { number: "100%", label: t('about.stats.dedication') }
               ].map((stat, index) => (
                 <motion.div
                   key={index}
-                  className="text-center p-6 lg:p-8 bg-gray-50 dark:bg-gray-700 rounded-2xl border border-gray-200 dark:border-gray-600 hover:shadow-lg dark:hover:shadow-gray-900/20 transition-all duration-300"
+                  className="relative text-center p-6 lg:p-8 glass-card hover:shadow-xl dark:hover:shadow-gray-900/20 transition-all duration-300 group overflow-hidden"
                   initial={{ opacity: 0, scale: 0.5 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.4 + (index * 0.1) }}
                   whileHover={{ y: -5, scale: 1.05 }}
                 >
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary-500/15 to-secondary-500/15 dark:from-primary-500/10 dark:to-secondary-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                  
+                  {/* Animated border */}
+                  <motion.div
+                    className="absolute inset-0 rounded-2xl border border-transparent bg-gradient-to-br from-primary-500/20 to-secondary-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `linear-gradient(135deg, transparent 30%, ${index % 2 === 0 ? 'rgba(79, 70, 229, 0.1)' : 'rgba(20, 184, 166, 0.1)'} 100%)`,
+                    }}
+                  />
                   <motion.div 
                     className="text-3xl lg:text-4xl font-bold text-primary-600 dark:text-primary-400 mb-2"
                     initial={{ scale: 0 }}

@@ -50,7 +50,30 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="section-padding bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <section id="skills" className="relative section-padding bg-gradient-to-br from-gray-50 via-white to-indigo-50/30 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900/20 transition-colors duration-300 overflow-hidden">
+      {/* Animated background pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-primary-400/30 dark:bg-primary-500/40 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.8, 0.2],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 3,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
       <div className="container-custom">
         <AnimatedSection className="text-center mb-12 lg:mb-16">
           <motion.span 
@@ -83,21 +106,42 @@ const Skills = () => {
           {skillsData.map((category, categoryIndex) => (
             <AnimatedSection key={categoryIndex} delay={categoryIndex * 0.2} className="h-full">
               <motion.div 
-                className="bg-white dark:bg-gray-800 rounded-2xl p-6 lg:p-8 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-2xl dark:hover:shadow-gray-900/20 transition-all duration-300 h-full"
-                whileHover={{ y: -5 }}
+                className="relative glass-card p-6 lg:p-8 hover:shadow-2xl dark:hover:shadow-gray-900/20 transition-all duration-300 h-full group overflow-hidden"
+                whileHover={{ y: -8, scale: 1.02 }}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: categoryIndex * 0.1 }}
               >
+                {/* Animated gradient background */}
+                <motion.div
+                  className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.3 }}
+                />
+                
+                {/* Glowing border effect */}
+                <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${category.color} opacity-30 blur-xl group-hover:opacity-50 dark:opacity-20 dark:group-hover:opacity-40 transition-opacity duration-500`} />
                 <motion.div 
-                  className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-2xl mb-6 mx-auto shadow-lg`}
-                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  className={`relative w-16 h-16 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-2xl mb-6 mx-auto shadow-lg z-10`}
+                  whileHover={{ scale: 1.15, rotate: 10 }}
                   transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {category.icon}
+                  <motion.span
+                    whileHover={{ scale: 1.2 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    {category.icon}
+                  </motion.span>
+                  
+                  {/* Rotating ring */}
+                  <motion.div
+                    className="absolute inset-0 rounded-xl border-2 border-white/30"
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+                  />
                 </motion.div>
                 
-                <h3 className="text-xl lg:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6">
+                <h3 className="relative text-xl lg:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6 z-10">
                   {category.category}
                 </h3>
 
@@ -105,12 +149,17 @@ const Skills = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div 
                       key={skillIndex}
-                      className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors group"
-                      whileHover={{ scale: 1.02, x: 5 }}
+                      className="relative flex items-center justify-between p-3 bg-white/70 dark:bg-gray-700/50 backdrop-blur-sm rounded-lg border border-gray-200/50 dark:border-gray-600/30 hover:bg-white/90 dark:hover:bg-gray-600/70 transition-all duration-300 group z-10"
+                      whileHover={{ scale: 1.03, x: 8 }}
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.6, delay: 0.3 + (skillIndex * 0.05) }}
                     >
+                      {/* Skill hover glow */}
+                      <motion.div
+                        className={`absolute inset-0 bg-gradient-to-r ${category.color} opacity-0 group-hover:opacity-20 rounded-lg transition-opacity duration-300`}
+                        whileHover={{ opacity: 0.2 }}
+                      />
                       <div className="flex items-center space-x-3">
                         <motion.span 
                           className="text-lg"

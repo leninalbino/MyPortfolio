@@ -32,7 +32,56 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300 pt-16 lg:pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-indigo-50 via-white to-cyan-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900 transition-colors duration-300 pt-16 lg:pt-20">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <motion.div
+          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-blue-400/20 to-purple-600/20 dark:from-blue-400/30 dark:to-purple-600/30 rounded-full blur-3xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        <motion.div
+          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-cyan-400/20 to-indigo-600/20 dark:from-cyan-400/30 dark:to-indigo-600/30 rounded-full blur-3xl"
+          animate={{
+            x: [0, -100, 0],
+            y: [0, 100, 0],
+            scale: [1.1, 1, 1.1],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        />
+        {/* Floating particles */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-2 h-2 bg-blue-500/40 dark:bg-blue-500/60 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -100, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 3 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
@@ -145,9 +194,39 @@ const Hero = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-primary-500 to-primary-700 dark:from-primary-400 dark:to-primary-600 rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden">
-                {/* Placeholder - reemplazar con tu foto */}
-                <div className="text-8xl lg:text-9xl">👨‍💻</div>
+              <div className="w-80 h-80 lg:w-96 lg:h-96 bg-gradient-to-br from-indigo-500 via-purple-500 to-cyan-500 dark:from-indigo-400 dark:via-purple-400 dark:to-cyan-400 rounded-full flex items-center justify-center shadow-2xl relative overflow-hidden">
+                {/* Enhanced avatar with glassmorphism effect */}
+                <div className="absolute inset-4 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-full border border-white/20 flex items-center justify-center">
+                  <div className="text-7xl lg:text-8xl drop-shadow-2xl filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.3)]">👨‍💻</div>
+                </div>
+                
+                {/* Animated ring */}
+                <motion.div
+                  className="absolute inset-0 rounded-full border-4 border-white/30"
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                
+                {/* Glowing particles around avatar */}
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-3 h-3 bg-white/60 rounded-full"
+                    style={{
+                      left: `${50 + 40 * Math.cos((i * Math.PI * 2) / 8)}%`,
+                      top: `${50 + 40 * Math.sin((i * Math.PI * 2) / 8)}%`,
+                    }}
+                    animate={{
+                      scale: [0.5, 1, 0.5],
+                      opacity: [0.3, 1, 0.3],
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      delay: i * 0.2,
+                    }}
+                  />
+                ))}
                 
                 {/* Decorative elements */}
                 <motion.div
@@ -162,29 +241,53 @@ const Hero = () => {
                 />
               </div>
 
-              {/* Floating badges */}
+              {/* Enhanced floating tech badges */}
               <motion.div
-                className="absolute -top-4 -left-4 bg-white dark:bg-gray-800 px-3 py-2 rounded-lg shadow-lg"
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                className="absolute -top-6 -left-6 bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-xl shadow-xl backdrop-blur-sm border border-white/20"
+                animate={{ 
+                  y: [0, -8, 0],
+                  rotateZ: [0, 2, 0]
+                }}
+                transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                whileHover={{ scale: 1.1, rotateZ: 5 }}
               >
-                <span className="text-sm font-semibold text-gray-900 dark:text-white">React</span>
+                <span className="text-sm font-bold">React</span>
               </motion.div>
 
               <motion.div
-                className="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 px-3 py-2 rounded-lg shadow-lg"
-                animate={{ y: [0, 5, 0] }}
+                className="absolute -bottom-6 -right-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-xl shadow-xl backdrop-blur-sm border border-white/20"
+                animate={{ 
+                  y: [0, 8, 0],
+                  rotateZ: [0, -2, 0]
+                }}
                 transition={{ duration: 2.5, repeat: Infinity }}
+                whileHover={{ scale: 1.1, rotateZ: -5 }}
               >
-                <span className="text-sm font-semibold text-gray-900 dark:text-white">TypeScript</span>
+                <span className="text-sm font-bold">TypeScript</span>
               </motion.div>
 
               <motion.div
-                className="absolute top-1/2 -right-8 bg-white dark:bg-gray-800 px-3 py-2 rounded-lg shadow-lg"
-                animate={{ x: [0, 5, 0] }}
-                transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+                className="absolute top-1/2 -right-10 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-xl shadow-xl backdrop-blur-sm border border-white/20"
+                animate={{ 
+                  x: [0, 8, 0],
+                  rotateZ: [0, 3, 0]
+                }}
+                transition={{ duration: 3.5, repeat: Infinity, delay: 1 }}
+                whileHover={{ scale: 1.1, rotateZ: 8 }}
               >
-                <span className="text-sm font-semibold text-gray-900 dark:text-white">Python</span>
+                <span className="text-sm font-bold">Python</span>
+              </motion.div>
+
+              <motion.div
+                className="absolute top-1/4 -left-8 bg-gradient-to-r from-orange-500 to-red-500 text-white px-3 py-2 rounded-xl shadow-xl backdrop-blur-sm border border-white/20"
+                animate={{ 
+                  x: [0, -6, 0],
+                  rotateZ: [0, -2, 0]
+                }}
+                transition={{ duration: 4, repeat: Infinity, delay: 2 }}
+                whileHover={{ scale: 1.1, rotateZ: -5 }}
+              >
+                <span className="text-sm font-bold">AWS</span>
               </motion.div>
             </motion.div>
           </motion.div>
