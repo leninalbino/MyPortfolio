@@ -263,7 +263,7 @@ const Hero = () => {
                 transition={{ duration: 2.5, repeat: Infinity }}
                 whileHover={{ scale: 1.1, rotateZ: -5 }}
               >
-                <span className="text-sm font-bold">TypeScript</span>
+                <span className="text-sm font-bold">Angular</span>
               </motion.div>
 
               <motion.div
@@ -287,7 +287,7 @@ const Hero = () => {
                 transition={{ duration: 4, repeat: Infinity, delay: 2 }}
                 whileHover={{ scale: 1.1, rotateZ: -5 }}
               >
-                <span className="text-sm font-bold">AWS</span>
+                <span className="text-sm font-bold">Java</span>
               </motion.div>
             </motion.div>
           </motion.div>

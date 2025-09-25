@@ -45,6 +45,7 @@ export const translations = {
       otherProjects: 'Otras experiencias',
       contactForDetails: 'Contactar para más detalles',
       viewRepository: 'Ver repositorio',
+      viewLiveDemo: 'Ver Demo en Vivo',
       consult: 'Consultar',
       github: 'GitHub',
       private: 'Privado',
@@ -85,8 +86,16 @@ export const translations = {
           period: '2022 - 2023',
           type: 'Desarrollo Frontend'
         },
+        inventory_system: {
+          title: 'Sistema de Gestión de Inventarios',
+          description: 'Sistema completo de gestión de inventarios con autenticación JWT, CRUD de productos, gestión de categorías, reportes en PDF, notificaciones por email y actualizaciones en tiempo real con WebSocket.',
+          company: 'Personal',
+          client: 'Proyecto Personal',
+          period: '2025 - Actualidad',
+          type: 'Desarrollo Full Stack'
+        },
         personal: {
-          title: 'Proyectos Personales',
+          title: 'Otros Proyectos Personales',
           description: 'Desarrollos personales y proyectos de aprendizaje con diferentes tecnologías del stack completo.',
           company: 'Personal',
           client: 'Proyectos propios',
@@ -173,6 +182,7 @@ export const translations = {
       otherProjects: 'Other experiences',
       contactForDetails: 'Contact for more details',
       viewRepository: 'View repository',
+      viewLiveDemo: 'View Live Demo',
       consult: 'Consult',
       github: 'GitHub',
       private: 'Private',
@@ -213,8 +223,16 @@ export const translations = {
           period: '2022 - 2023',
           type: 'Frontend Development'
         },
+        inventory_system: {
+          title: 'Inventory Management System',
+          description: 'Complete inventory management system with JWT authentication, product CRUD operations, category management, PDF reports, email notifications, and real-time updates with WebSocket.',
+          company: 'Personal',
+          client: 'Personal Project',
+          period: '2024 - Present',
+          type: 'Full Stack Development'
+        },
         personal: {
-          title: 'Personal Projects',
+          title: 'Other Personal Projects',
           description: 'Personal developments and learning projects with different full-stack technologies.',
           company: 'Personal',
           client: 'Own projects',
